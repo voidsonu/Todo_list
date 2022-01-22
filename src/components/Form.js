@@ -1,10 +1,10 @@
 import React,{ useEffect } from 'react';
-import{v4 as uuidV4} from 'uuid';
+import{v4 as uuidv4} from 'uuid';
 
 export const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo})=>{
     const updateTodo = (title, id, completed)=>{
         const newTodo = todos.map((todo) =>
-            todo.id === id ?{title, id , completed} : todo
+            todo.id === id ? {title, id, completed} : todo
         );
         setTodos(newTodo);
         setEditTodo("");
@@ -22,7 +22,7 @@ export const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo})=
     const onFormSubmit =(event)=>{
         event.preventDefault();
         if(!editTodo){
-            setTodos([...todos,{id:uuidV4(),title:input, completed: false}]);
+            setTodos([...todos,{id:uuidv4(),title:input, completed: false}]);
             setInput("");
         } else {
             updateTodo(input, editTodo.id, editTodo.completed )
